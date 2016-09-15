@@ -7,6 +7,8 @@
  * On this wiki page we describe in detail the code that is used to run this example from the paper.
  *
  * The easiest way to visualize these simulations are with Paraview.
+ * 
+ * [[EmbedYoutube(4YZp_WmBZTI)]]
  *
  * == Code overview ==
  *
