@@ -6,7 +6,7 @@
  *
  * On this wiki page we describe in detail the code that is used to run this example from the paper.
  *
- * The easiest way to visualize these simulations are with Paraview.
+ * The easiest way to visualize these simulations is with Paraview.
  * 
  * [[EmbedYoutube(SX2GFOr0Dus)]]
  *
@@ -65,7 +65,7 @@
 #include "PetscSetupAndFinalize.hpp"
 
 /*
- *  This is where you can set parameters toi be used in all the simulations.
+ *  This is where you can set parameters to be used in all the simulations.
  */
 
 static const double M_TIME_FOR_SIMULATION = 1000; //100

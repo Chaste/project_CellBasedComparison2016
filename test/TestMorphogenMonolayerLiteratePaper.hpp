@@ -6,7 +6,7 @@
  *
  * On this wiki page we describe in detail the code that is used to run this example from the paper.
  *
- * The easiest way to visualize these simulations are with Paraview.
+ * The easiest way to visualize these simulations is with Paraview.
  * 
  * [[EmbedYoutube(Yl2GT2x2ohc)]]
  *
@@ -365,10 +365,12 @@ public:
      * Voronoi Tesselation model.
      */
 
-    /* TODO This test runs and gives a result but now (as of 27/04/16) gives the following error
+    /* 
+     * \todo ???
+     * TODO This test runs and gives a result but now (as of 27/04/16) gives the following error
      * 'New nonzero at (5,39) caused a malloc' which is independent of run size.
      *
-     * Not if we just use a simple Uniformly Disctributed CCM then we dont get the error.
+     * Note: if we just use a simple Uniformly Distributed CCM then we don't get the error.
      */
 
     void TestMeshBasedMorphogenMonolayer() throw (Exception)

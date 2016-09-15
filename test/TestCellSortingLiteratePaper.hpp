@@ -6,7 +6,7 @@
  *
  * On this wiki page we describe in detail the code that is used to run this example from the paper.
  *
- * The easiest way to visualize these simulations are with Paraview.
+ * The easiest way to visualize these simulations is with Paraview.
  * 
  * [[EmbedYoutube(4YZp_WmBZTI)]]
  *
@@ -63,7 +63,7 @@
 #include "PetscSetupAndFinalize.hpp"
 
 /*
- *  This is where you can set parameters toi be used in all the simulations.
+ *  This is where you can set parameters to be used in all the simulations.
  */
 
 static const double M_TIME_TO_STEADY_STATE = 10; //10
@@ -76,7 +76,7 @@ class TestCellSortingLiteratePaper : public AbstractCellBasedWithTimingsTestSuit
 private:
 
     /*
-     * This is a helper method to randomly lablel cells add is used in all simulations.
+     * This is a helper method to randomly label cells add is used in all simulations.
      */ 
 
     void RandomlyLabelCells(std::list<CellPtr>& rCells, boost::shared_ptr<AbstractCellProperty> pLabel, double labelledRatio)
