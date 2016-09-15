@@ -1,3 +1,15 @@
+/*
+ * = Adhesion Example =
+ *
+ * On this wiki page we describe in detail the code that is used to run this example from the paper.
+ *
+ * The easiest way to visualize these simulations are with Paraview.
+ *
+ * == Code overview ==
+ *
+ * The first thing to do is to include the necessary header files.
+ */
+
 #include <cxxtest/TestSuite.h>
 
 // Must be included before other cell_based headers
@@ -45,6 +57,10 @@
 
 #include "PetscSetupAndFinalize.hpp"
 
+/*
+ *  This is where you can set parameters toi be used in all the simulations.
+ */
+
 static const double M_TIME_TO_STEADY_STATE = 10; //10
 static const double M_TIME_FOR_SIMULATION = 100; //100
 static const double M_NUM_CELLS_ACROSS = 20; //20 // this ^2 cells
@@ -53,6 +69,10 @@ static const double M_CELL_FLUCTUATION = 1.0;
 class TestCellSortingLiteratePaper : public AbstractCellBasedWithTimingsTestSuite
 {
 private:
+
+    /*
+     * This is a helper method to randomly lablel cells ad in used in all simulations.
+     */ 
 
     void RandomlyLabelCells(std::list<CellPtr>& rCells, boost::shared_ptr<AbstractCellProperty> pLabel, double labelledRatio)
     {
@@ -69,7 +89,9 @@ private:
 
 public:
 
-    /**
+    /*
+     * == CA ==
+     *
      * Simulate a population of cells exhibiting cell sorting using the
      * Cellular Automaton model.
      */
@@ -149,7 +171,9 @@ public:
         TS_ASSERT_EQUALS(simulator.GetNumDeaths(), 0u);
     }
 
-    /**
+    /*
+     * == CP ==
+     *
      * Simulate a population of cells exhibiting cell sorting using the
      * Cellular Potts model.
      */
@@ -227,7 +251,9 @@ public:
         TS_ASSERT_EQUALS(simulator.GetNumDeaths(), 0u);
     }
 
-    /**
+    /*
+     * == OS ==
+     *
      * Simulate a population of cells exhibiting cell sorting using the
      * Overlapping Sphere model.
      */
@@ -303,8 +329,9 @@ public:
         TS_ASSERT_EQUALS(simulator.GetNumBirths(), 0u);
         TS_ASSERT_EQUALS(simulator.GetNumDeaths(), 0u);
     }
-
-    /**
+    /*
+     * == VT ==
+     *
      * Simulate a population of cells exhibiting cell sorting using the
      * Voronoi tesselation model.
      */
@@ -374,7 +401,9 @@ public:
         TS_ASSERT_EQUALS(simulator.GetNumDeaths(), 0u);
     }
 
-    /**
+    /*
+     * == VM ==
+     *
      * Simulate a population of cells exhibiting cell sorting using the
      * Cell Vertex model.
      */
