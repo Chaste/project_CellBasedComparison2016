@@ -24,7 +24,7 @@ To checkout the source code for the specific code revision use the command
   git clone --depth 1 --branch paper/CellBasedComparison https://chaste.cs.ox.ac.uk/git/chaste.git Chaste
   cd Chaste
 }}}
-Alternatively, if you already have a clone of our Git repository then simply run the command {{{git checkout paper/CellBasedComparison}}} to move your source to the correct revision.
+Alternatively, if you already have a clone of our Git repository then simply run the command {{{git pull; git checkout paper/CellBasedComparison}}} to move your source to the correct revision.
 
 This project can be built with either of the two builders SCons or CMake.  (Note that SCons will be deprecated in a later release of Chaste.)
 At this point you should configure Chaste with [wiki:ChasteGuides/UserBuildGuide Scons] or [wiki:ChasteGuides/CmakeBuildGuide CMake].
@@ -57,15 +57,37 @@ There are two folders - `src` and `test`.
 ||= VM =|| [[Image(source:projects/CellBasedComparison2016/figures/Sorting_Vertex_1_t1000.png, link=wiki:PaperTutorials/CellBasedComparison2016/CellSorting#VM, height=100px)]] || [[Image(source:projects/CellBasedComparison2016/figures/Crypt_Vertex_08_t100.png, link=wiki:PaperTutorials/CellBasedComparison2016/CylindricalCrypt#VM, height=100px)]] || [[Image(source:projects/CellBasedComparison2016/figures/DN_Vertex_01_t1000.png, link=wiki:PaperTutorials/CellBasedComparison2016/DeltaNotch#VM, height=100px)]] || [[Image(source:projects/CellBasedComparison2016/figures/Morph_Vertex_t100.png, link=wiki:PaperTutorials/CellBasedComparison2016/MorphogenMonolayer#VM, height=100px)]] ||
 
 == Running tests ==
-You can then run tests and simulations with,
+With SCons you can run tests with,
 {{{
 cd <Chaste path>
+
+# Make and run a test at a time:
 scons b=GccOpt ts=projects/CellBasedComparison2016/test/TestCellSortingLiteratePaper.hpp
+# etc.
+
+# Make and run all tests on 4 threads:
+scons b=GccOpt -j4 projects/CellBasedComparison2016
 }}}
-etc.
+
+With CMake you can run tests with,
+{{{
+cd <Chaste path>
+cd ../chaste-build  # Assuming you have configured CMake here.
+cmake . # Unnecessary extra step to pick up project and reconfigure 
+
+# Make and run a test at a time:
+make  TestCellSortingLiteratePaperRunner
+ctest -R TestCellSortingLiteratePaper 
+# etc.
+
+# Make and run all tests on 4 threads:
+make -j 4 project_CellBasedComparison2016
+ctest -j 4 -L project_CellBasedComparison2016
+}}}
+
 
 ----
-'''NB''': the paper was developed with release version '''tag=...''' (will be included in next release). It will not work with with release version 3.3 or under.
+'''NB''': the paper was developed with the specific tagged development version of Chaste {{{}}}. It does not work with release version 3.4 or under, but will work on future releases.
 
 For further information on using Chaste, see the [wiki:ChasteGuides extensive guide material].
 You may also wish to look at some of the [wiki:UserTutorials basic user tutorials].
