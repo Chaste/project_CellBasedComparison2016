@@ -87,7 +87,7 @@ ctest -j 4 -L project_CellBasedComparison2016
 
 
 ----
-'''NB''': the paper was developed with the specific tagged development version of Chaste {{{}}}. It does not work with release version 3.4 or under, but will work on future releases.
+'''NB''': the paper was developed with the specific tagged development version of Chaste {{{paper/CellBasedComparison}}}. It does not work with release version 3.4 or under, but will work on future releases.
 
 For further information on using Chaste, see the [wiki:ChasteGuides extensive guide material].
 You may also wish to look at some of the [wiki:UserTutorials basic user tutorials].
