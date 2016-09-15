@@ -76,7 +76,7 @@ class TestCellSortingLiteratePaper : public AbstractCellBasedWithTimingsTestSuit
 private:
 
     /*
-     * This is a helper method to randomly lablel cells ad in used in all simulations.
+     * This is a helper method to randomly lablel cells add is used in all simulations.
      */ 
 
     void RandomlyLabelCells(std::list<CellPtr>& rCells, boost::shared_ptr<AbstractCellProperty> pLabel, double labelledRatio)

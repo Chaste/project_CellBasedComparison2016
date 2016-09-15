@@ -1,3 +1,20 @@
+#ifndef TESTCYLINDRICALCRYPTLITERATEPAPER_HPP_
+#define TESTCYLINDRICALCRYPTLITERATEPAPER_HPP_
+
+/*
+ * = Proliferation Example =
+ *
+ * On this wiki page we describe in detail the code that is used to run this example from the paper.
+ *
+ * The easiest way to visualize these simulations are with Paraview.
+ * 
+ * [[EmbedYoutube(F04IlE2PyY0)]]
+ *
+ * == Code overview ==
+ *
+ * The first thing to do is to include the necessary header files.
+ */
+
 #include <cxxtest/TestSuite.h>
 
 // Must be included before any other cell_based headers
@@ -48,6 +65,10 @@
 #include "PetscSetupAndFinalize.hpp"
 #include "Warnings.hpp"
 
+/*
+ *  This is where you can set parameters toi be used in all the simulations.
+ */
+
 static const double M_END_STEADY_STATE = 100; //100
 static const double M_END_TIME = 1100; //1100
 static const double M_CRYPT_DIAMETER = 16;
@@ -57,6 +78,11 @@ static const double M_CONTACT_INHIBITION_LEVEL = 0.8;
 class TestCylindricalCryptLiteratePaper : public AbstractCellBasedWithTimingsTestSuite
 {
 private:
+
+
+    /*
+     * This is a helper method to generate cells and is used in all simulations.
+     */ 
 
     void GenerateCells(unsigned num_cells, std::vector<CellPtr>& rCells, double equilibriumVolume, double quiescentVolumeFraction)
     {
@@ -88,7 +114,9 @@ private:
 
 public:
 
-    /**
+    /*
+     * == CA ==
+     *
      * Simulate cell proliferation in the colorectal crypt using the
      * Cellular Automaton model.
      */
@@ -156,7 +184,9 @@ public:
         WntConcentration<2>::Instance()->Destroy();
     }
 
-    /**
+    /*
+     * == CP ==
+     *
      * Simulate cell proliferation in the colorectal crypt using the
      * Cellular Potts model.
      */
@@ -236,7 +266,9 @@ public:
         WntConcentration<2>::Instance()->Destroy();
     }
 
-    /**
+    /*
+     * == OS ==
+     *
      * Simulate cell proliferation in the colorectal crypt using the
      * Overlapping Spheres model.
      */
@@ -318,7 +350,9 @@ public:
         WntConcentration<2>::Instance()->Destroy();
     }
 
-    /**
+    /*
+     * == VT ==
+     *
      * Simulate cell proliferation in the colorectal crypt using the
      * Voronoi Tesselation model.
      */
@@ -390,7 +424,9 @@ public:
         WntConcentration<2>::Instance()->Destroy();
     }
 
-    /**
+    /*
+     * == VM ==
+     *
      * Simulate cell proliferation in the colorectal crypt using the
      * Cell Vertex model.
      */
@@ -438,10 +474,6 @@ public:
         p_force->SetNagaiHondaCellBoundaryAdhesionEnergyParameter(10.0);
         simulator.AddForce(p_force);
 
-        // A NagaiHondaForce has to be used together with an AbstractTargetAreaModifier
-//        MAKE_PTR(SimpleTargetAreaModifier<2>, p_growth_modifier);
-//        simulator.AddSimulationModifier(p_growth_modifier);
-
         // Solid base Boundary condition
         MAKE_PTR_ARGS(PlaneBoundaryCondition<2>, p_bcs, (&cell_population, zero_vector<double>(2), -unit_vector<double>(2,1)));
         p_bcs->SetUseJiggledNodesOnPlane(true);
@@ -466,3 +498,5 @@ public:
         Warnings::Instance()->QuietDestroy();
     }
 };
+
+#endif /* TESTCYLINDRICALCRYPTLITERATEPAPER_HPP_ */

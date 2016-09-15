@@ -1,3 +1,20 @@
+#ifndef TESTMORPHOGENMONOLAYERLITERATEPAPER_HPP_
+#define TESTMORPHOGENMONOLAYERLITERATEPAPER_HPP_
+
+/*
+ * = Long-range Signalling Example =
+ *
+ * On this wiki page we describe in detail the code that is used to run this example from the paper.
+ *
+ * The easiest way to visualize these simulations are with Paraview.
+ * 
+ * [[EmbedYoutube(Yl2GT2x2ohc)]]
+ *
+ * == Code overview ==
+ *
+ * The first thing to do is to include the necessary header files.
+ */
+
 #include <cxxtest/TestSuite.h>
 
 // Must be included before other cell_based headers
@@ -49,6 +66,9 @@
 
 #include "PetscSetupAndFinalize.hpp"
 
+/*
+ *  This is where you can set parameters toi be used in all the simulations.
+ */
 
 static const double M_TIME_FOR_SIMULATION = 100; //100
 static const double M_NUM_CELLS_ACROSS = 10; // 10
@@ -59,6 +79,10 @@ static const double M_DUDT_COEFFICIENT = 1.0; // Not used in paper so 1
 class TestMorphogenMonolayerLiteratePaper : public AbstractCellBasedWithTimingsTestSuite
 {
 private:
+
+    /*
+     * This is a helper method to generate cells and is used in all simulations.
+     */ 
     void GenerateCells(unsigned num_cells, std::vector<CellPtr>& rCells)
     {
         MAKE_PTR(WildTypeCellMutationState, p_state);
@@ -96,7 +120,9 @@ private:
 
 public:
 
-    /**
+    /*
+     * == CA ==
+     *
      * Simulate reaction diffusion on a growing a population of cells in the
      * Cellular Automaton model.
      */
@@ -172,7 +198,9 @@ public:
         simulator.Solve();
     }
 
-    /**
+    /*
+     * == CP ==
+     *
      * Simulate reaction diffusion on a growing a population of cells in the
      * Cellular Potts model.
      */
@@ -257,7 +285,9 @@ public:
         simulator.Solve();
     }
 
-    /**
+    /*
+     * == OS ==
+     *
      * Simulate reaction diffusion on a growing a population of cells in the
      * Overlapping Spheres model.
      */
@@ -327,7 +357,10 @@ public:
 
         delete p_mesh; // to stop memory leaks
     }
-    /**
+
+    /*
+     * == VT ==
+     *
      * Simulate reaction diffusion on a growing a population of cells in the
      * Voronoi Tesselation model.
      */
@@ -405,7 +438,9 @@ public:
         simulator.Solve();
     }
 
-    /**
+    /*
+     * == VM ==
+     *
      * Simulate reaction diffusion on a growing a population of cells in the
      * Cell Vertex model.
      */
@@ -481,3 +516,5 @@ public:
         simulator.Solve();
     }
 };
+
+#endif /* TESTMORPHOGENMONOLAYERLITERATEPAPER_HPP_ */

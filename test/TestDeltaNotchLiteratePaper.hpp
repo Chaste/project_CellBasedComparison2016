@@ -1,3 +1,20 @@
+#ifndef TESTDELTANOTCHLITERATEPAPER_HPP_
+#define TESTDELTANOTCHLITERATEPAPER_HPP_
+
+/*
+ * = Short-range Signalling Example =
+ *
+ * On this wiki page we describe in detail the code that is used to run this example from the paper.
+ *
+ * The easiest way to visualize these simulations are with Paraview.
+ * 
+ * [[EmbedYoutube(SX2GFOr0Dus)]]
+ *
+ * == Code overview ==
+ *
+ * The first thing to do is to include the necessary header files.
+ */
+
 #include <cxxtest/TestSuite.h>
 
 // Must be included before other cell_based headers
@@ -47,6 +64,10 @@
 
 #include "PetscSetupAndFinalize.hpp"
 
+/*
+ *  This is where you can set parameters toi be used in all the simulations.
+ */
+
 static const double M_TIME_FOR_SIMULATION = 1000; //100
 static const double M_TISSUE_RADIUS = 15; // 15
 static const double M_PROLIF_RADIUS = 5; // 5
@@ -56,6 +77,10 @@ class TestDeltaNotchLiteratePaper: public AbstractCellBasedWithTimingsTestSuite
 {
 private:
 
+
+    /*
+     * This is a helper method to generate cells and is used in all simulations.
+     */ 
     void GenerateCells(unsigned num_cells, std::vector<CellPtr>& rCells, double divisionProbability)
     {
         boost::shared_ptr<AbstractCellProperty> p_state(CellPropertyRegistry::Instance()->Get<WildTypeCellMutationState>());
@@ -87,11 +112,13 @@ private:
 
 public:
 
-    /**
+    /*
+     * == CA ==
+     *
      * Simulate juxtacrine signalling in a population of cells in the
      * Cellular Automaton model.
      */
-   void noTestCaBasedDeltaNotch() throw (Exception)
+   void TestCaBasedDeltaNotch() throw (Exception)
    {
         // Create a simple 2D PottsMesh
         unsigned domain_wide = 3*M_TISSUE_RADIUS;
@@ -152,11 +179,13 @@ public:
         simulator.Solve();
     }
 
-    /**
+    /*
+     * == CP ==
+     *
      * Simulate juxtacrine signalling in a population of cells in the
      * Cellular Potts model.
      */
-    void noTestPottsBasedDeltaNotch() throw (Exception)
+    void TestPottsBasedDeltaNotch() throw (Exception)
     {
         // Create a simple 2D PottsMesh
         unsigned element_size = 4;
@@ -223,11 +252,13 @@ public:
         simulator.Solve();
     }
 
-    /**
+    /*
+     * == OS ==
+     *
      * Simulate juxtacrine signalling in a population of cells in the
      * Overlapping Spheres model.
      */
-    void noTestNodeBasedDeltaNotch() throw (Exception)
+    void TestNodeBasedDeltaNotch() throw (Exception)
     {
 
         // Create a simple mesh
@@ -288,7 +319,9 @@ public:
    }
 
 
-    /**
+    /*
+     * == VT ==
+     *
      * Simulate juxtacrine signalling in a population of cells in the
      * Voronoi Tesselation model.
      */
@@ -349,11 +382,13 @@ public:
         simulator.Solve();
     }
 
-    /**
+    /*
+     * == VM ==
+     *
      * Simulate juxtacrine signalling in a population of cells
      * Cell Vertex model.
      */
-    void noTestVertexBasedDeltaNotch() throw (Exception)
+    void TestVertexBasedDeltaNotch() throw (Exception)
     {
         // Create a simple 2D MutableVertexMesh
         HoneycombVertexMeshGenerator generator(2*M_TISSUE_RADIUS,2.5*M_TISSUE_RADIUS);
@@ -404,10 +439,6 @@ public:
         p_force->SetNagaiHondaCellBoundaryAdhesionEnergyParameter(10.0);
         simulator.AddForce(p_force);
 
-//        // A NagaiHondaForce has to be used together with an AbstractTargetAreaModifier
-//        MAKE_PTR(SimpleTargetAreaModifier<2>, p_growth_modifier);
-//        simulator.AddSimulationModifier(p_growth_modifier);
-
         // Add a cell killer
         MAKE_PTR_ARGS(RadialSloughingCellKiller, p_killer, (&cell_population, zero_vector<double>(2), M_TISSUE_RADIUS));
         simulator.AddCellKiller(p_killer);
@@ -416,3 +447,5 @@ public:
         simulator.Solve();
    }
 };
+
+#endif /* TESTDELTANOTCHLITERATEPAPER_HPP_ */

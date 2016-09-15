@@ -4,6 +4,11 @@ Welcome to the Chaste wiki.
 
 This section contains pages generated automatically from the source code accompanying the paper "Comparing individual-based approaches to modelling the self-organization of multicellular tissues". 
 
+[[EmbedYoutube(4YZp_WmBZTI)]]
+[[EmbedYoutube(F04IlE2PyY0)]]
+[[EmbedYoutube(SX2GFOr0Dus)]]
+[[EmbedYoutube(Yl2GT2x2ohc)]]
+
 == Getting the code and installing dependencies ==
 
 Before running these examples you will need to [wiki:InstallGuides/InstallGuide install Chaste's dependencies].
