@@ -1,3 +1,6 @@
+#ifndef TESTCELLSORTINGLITERATEPAPER_HPP_
+#define TESTCELLSORTINGLITERATEPAPER_HPP_
+
 /*
  * = Adhesion Example =
  *
@@ -486,3 +489,5 @@ public:
         TS_ASSERT_EQUALS(simulator.GetNumDeaths(), 0u);
     }
 };
+
+#endif /* TESTCELLSORTINGLITERATEPAPER_HPP_ */
