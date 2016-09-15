@@ -23,14 +23,14 @@ To checkput the source code for the specific code revision use the command
 {{{
   git clone https://chaste.cs.ox.ac.uk/git/chaste.git Chaste
   cd Chaste
-  checkout <REVISION>
+  git checkout <REVISION>
 }}}
 
 You will also need the source for the CellBasedComparison2016 project.  This can be done by checking out the version from the repository by using the command 
 {{{
-svn checkout https://chaste.cs.ox.ac.uk/svn/chaste/projects/CellBasedComparison2016
+svn checkout https://chaste.cs.ox.ac.uk/svn/chaste/projects/CellBasedComparison2016 projects/CellBasedComparison2016
 }}}
-in the projects folder of the Chaste directory. 
+in the Chaste directory. 
 
 Now the project should be installed, and everything should compile and run correctly. 
 You can now run the tests or simulations, or create your own test suites.
