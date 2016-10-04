@@ -365,14 +365,6 @@ public:
      * Voronoi Tesselation model.
      */
 
-    /* 
-     * \todo ???
-     * TODO This test runs and gives a result but now (as of 27/04/16) gives the following error
-     * 'New nonzero at (5,39) caused a malloc' which is independent of run size.
-     *
-     * Note: if we just use a simple Uniformly Distributed CCM then we don't get the error.
-     */
-
     void TestMeshBasedMorphogenMonolayer() throw (Exception)
     {
         HoneycombMeshGenerator generator(2.0*M_NUM_CELLS_ACROSS,3.0*M_NUM_CELLS_ACROSS);
