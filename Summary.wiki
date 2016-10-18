@@ -31,9 +31,9 @@ At this point you should configure Chaste with [wiki:ChasteGuides/UserBuildGuide
 
 You will also need the source for the CellBasedComparison2016 project.  This can be done by checking out the version from the repository by using the command 
 {{{
-svn checkout https://chaste.cs.ox.ac.uk/svn/chaste/projects/CellBasedComparison2016 projects/CellBasedComparison2016
+svn checkout --username anonymous https://chaste.cs.ox.ac.uk/svn/chaste/projects/CellBasedComparison2016 projects/CellBasedComparison2016
 }}}
-in the Chaste directory. 
+in the Chaste directory. Note that '''username''' for checking out the project code is 'anonymous'.  When prompted for a password then please give an email address.
 
 Now the project should be installed, and everything should compile and run correctly. 
 You can now run the tests or simulations, or create your own test suites.
